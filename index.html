@@ -1,41 +1,110 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="nav">
-            <ul>
-                <li><div class="logo" href="logo.asp">Logo</div></li>
-                <li><div class="title" href="title.asp">Title</div></li>
-                <li><div class="login" href="login.asp">Log In</div></li>
-                <li><div class="signup" href="signup.asp">Sign Up</div></li>
-            </ul>
-        </div>
-        <div class="main">
-            <div class="c1">
-                <div class="list-container">
-                    <div class="list-item">
-                        <div class="menu-logo">Logo1</div>
-                        <div class="menu-option">Option1</div>
-                    </div>
-                    <div class="list-item">
-                        <div class="menu-logo">Logo2</div>
-                        <div class="menu-option">Option2</div>
-                    </div>
-                    <div class="list-item">
-                        <div class="menu-logo">Logo3</div>
-                        <div class="menu-option">Option3</div>
-                    </div>
-                </div>
-                <div class="link-container">
-                    <div class="page-link">Link1</div>
-                    <div class="page-link">Link2</div>
-                </div>
-            </div>
-            <div class="c2">
-                Hello
-            </div>
-        </div>
-    </body>
-</html>
+<script src="https://kit.fontawesome.com/a619b53ad7.js" crossorigin="anonymous"></script>
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<div id="header">
+  <div>
+    <div id="logo"><i class="fa-solid fa-music"></i></div>
+    <div id="name">Fotify</div>
+  </div>
+  <div>
+    <div id="login">Login</div>
+    <div id="register">Register</div>
+  </div>
+</div>
+<div id="menu">
+    <div class="menuItem">
+      <i class="fa-solid fa-user"></i>
+      <p>Account</p>
+    </div>
+    
+    <div class="menuItem">
+        <i class="fa-solid fa-heart"></i>
+        <p>Favorites</p>
+    </div>
+    
+    <div class="menuItem">
+        <i class="fa-solid fa-list"></i>
+        <p>All Songs</p>
+    </div>
+    
+    <div class="menuItem">
+        <i class="fa-solid fa-compact-disc"></i>
+        <p>Albums</p>
+    </div>
+    
+   <div id="policyLinks">
+      <div><span>Privacy Policy</span> | <span>Cookies</span></div>
+    </div>
+    
+</div>
+<div id="main">
+  <div class="category">
+    <div class="categoryNameSpace">Category Name Space</div>
+    <div class="tracks">
+      <div class="categoryName">Discover Daft Punk</div>
+      <div class="track">
+        <div class="trackImage" style="background-image:url('images/t1.jpeg')"><i onclick="toggleSong('s1',this)" class="fa-solid fa-circle-play"></i></div>
+        <div class="trackDescription">Homework</div>
+      </div>
+      <div class="track">
+        <div class="trackImage" style="background-image:url('images/t2.jpeg')"><i onclick="toggleSong('s2',this)" class="fa-solid fa-circle-play"></i></i></div>
+        <div class="trackDescription">Human After All</div>
+      </div>
+      <div class="track">
+        <div class="trackImage" style="background-image:url('images/t3.jpeg')"><i onclick="toggleSong('s3',this)" class="fa-solid fa-circle-play"></i></i></div>
+        <div class="trackDescription">Alive 2007</div>
+      </div>
+      <div class="track">
+        <div class="trackImage" style="background-image:url('images/t4.webp')"><i onclick="toggleSong('s4',this)" class="fa-solid fa-circle-play"></i></i></div>
+        <div class="trackDescription">Discovery</div>
+      </div>
+      <div class="track">
+        <div class="trackImage" style="background-image:url('images/t5.jpg')"><i onclick="toggleSong('s5',this)" class="fa-solid fa-circle-play"></i></i></div>
+        <div class="trackDescription">Alive 1997</div>
+      </div>
+  </div>
+</div>
+  <div class="category">
+  <div class="categoryNameSpace">Category Name Space</div>
+  <div class="tracks">
+    <div class="categoryName">Rap</div>
+    <div class="track">
+      <div class="trackImage" style="background-image:url('images/e1.jpeg')"><i onclick="toggleSong('s6',this)" class="fa-solid fa-circle-play"></i></i></div>
+      <div class="trackDescription">A boogie</div>
+    </div>
+    <div class="track">
+      <div class="trackImage" style="background-image:url('images/e2.jpg')"><i onclick="toggleSong('s7',this)" class="fa-solid fa-circle-play"></i></i></div>
+      <div class="trackDescription">Pop Smoke</div>
+    </div>
+    <div class="track">
+      <div class="trackImage" style="background-image:url('images/e3.png')"><i onclick="toggleSong('s8',this)" class="fa-solid fa-circle-play"></i></i></div>
+      <div class="trackDescription">Lentra</div>
+    </div>
+    <div class="track">
+      <div class="trackImage" style="background-image:url('images/e4.webp')"><i onclick="toggleSong('s9',this)" class="fa-solid fa-circle-play"></i></i></div>
+      <div class="trackDescription">Drake</div>
+    </div>
+    <div class="track">
+      <div class="trackImage" style="background-image:url('images/e5.jpeg')"><i onclick="toggleSong('s10',this)" class="fa-solid fa-circle-play"></i></i></div>
+      <div class="trackDescription">Yung Lean</div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="footer">You've got a message, dude!</div>
+
+<script>
+  var songTitles = ["s1","s2","s3","s4","s5","s6","s7","s8","s9","s10"];
+  var audios = [];
+  songTitles.forEach(song => audios.push(new Audio("songs/"+song + ".mp3")));
+
+  function toggleSong(songName,element) {
+    var audio = audios[songTitles.indexOf(songName)];
+    element.className = audio.paused ?  "fa-solid fa-circle-pause":"fa-solid fa-circle-play";
+    audio.paused ? audio.play() : audio.pause();
+  }
+</script>
